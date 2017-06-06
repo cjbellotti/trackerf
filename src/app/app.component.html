@@ -1,3 +1,38 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
+  <header id="header" class="col-12">
+    <h1>{{title}}</h1>
+  </header>
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand"[routerLink]="['/home']" [routerLinkActive]="['activado']">Home</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/products']" [routerLinkActive]="['activado']">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/warehouses']" [routerLinkActive]="['activado']">Ubicaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/entry']" [routerLinkActive]="['activado']">Ingreso de productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/movements']" [routerLinkActive]="['activado']">Crear movimiento</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/view-movements']" [routerLinkActive]="['activado']">Consultar movimientos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/stock-summary']" [routerLinkActive]="['activado']">Resumen de stock</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <section id="content" class="col-12">
+    <hr>
+    <router-outlet></router-outlet>
+  </section>
+  <footer id="footer" class="col-12"></footer>
+</div>

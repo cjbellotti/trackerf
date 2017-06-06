@@ -3,18 +3,33 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import {routing, appRoutingProviders } from './app.routing';
+
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home.component';
+import { ProductsComponent } from './components/products.component';
+import { WarehousesComponent } from './components/warehouses.component';
+import { EntryComponent } from './components/entry.component';
+import { ErrorComponent } from './components/error.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    ProductsComponent,
+    WarehousesComponent,
+    EntryComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
-  providers: [],
+  providers: [
+    appRoutingProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

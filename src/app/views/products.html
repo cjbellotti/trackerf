@@ -1,0 +1,51 @@
+<div class="row" style="margin-bottom : 10px">
+  <div class="col-6">
+    <h3>{{title}}</h3>
+  </div>
+  <div class="col-6" style="text-align: right" *ngIf="!_form">
+    <button class="btn btn-success btn-md" (click)="enableNew()">Nuevo</button>
+  </div>
+  <div class="col-6" style="text-align: right" *ngIf="_form">
+    <button class="btn btn-danger btn-md" (click)="disableNew()">Cerrar</button>
+  </div>
+</div>
+<form #formProductInfo="ngForm"
+      class="col-12"
+      id="form-producto-info"
+      (ngSubmit)="onSubmit()"
+      *ngIf="_form">
+  <div class="form-group">
+    <label for="nombre">
+      Nombre
+      <span></span>
+    </label>
+    <input type="text"
+            #nombre="ngModel"
+            name="nombre"
+            class="form-control"
+            [(ngModel)]="_productInfo.name"
+            required>
+  </div>
+  <div class="form-group" style="text-align : right">
+    <input type="submit" value="Crear" [disabled]="!formProductInfo.form.valid" class="btn btn-success">
+  </div>
+</form>
+<hr>
+<span *ngIf="!_lista">Cargando...</span>
+<table class="table" *ngIf="_lista">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Nombre</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let productInfo of _lista">
+      <td>{{productInfo.name}}</td>
+      <td style="text-align: right">
+        <button class="btn btn-success btn-md" (click)="update(productInfo.id)">Modifcar</button>
+        <button class="btn btn-danger btn-md" (click)="delete(productInfo.id)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
