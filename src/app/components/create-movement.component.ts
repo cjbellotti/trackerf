@@ -11,16 +11,18 @@ import { StockMovementService } from '../services/stock-movement.service';
 
 @Component({
   selector : 'entry',
-  templateUrl : '../views/entry.html'
+  templateUrl : '../views/create-movement.html'
 })
 
-export class EntryComponent {
+export class CreateMovementComponent {
   public title : string;
   private _stockMovement : StockMovement;
 
   private _productInfoList : Array<ProductInfoService>;
   private _warehouseList : Array<Warehouse>;
   private _productList : Array<Product>;
+
+  private _productInfoId : number = 0;
 
   constructor(
     private _productInfoService : ProductInfoService,
@@ -68,8 +70,39 @@ export class EntryComponent {
     this._stockMovement.target = null;
   }
 
+  onProductInfoSelectChange() {
+      console.log(`Seleccionado: ${this._productInfoId}`);
+      this._productList = null;
+      this._productService.getProductByProductInfoAndLocation(this._productInfoId,
+                                                    this._stockMovement.sourceId)
+          .subscribe(
+            result => {
+              this._productList = result;
+            },
+            error => {
+              alert(<any>error);
+            }
+          );
+  }
+
   onSubmit() {
-    // create stock_movement
+    this._stockMovementService.move(this._stockMovement.productId,
+                                    this._stockMovement.sourceId,
+                                    this._stockMovement.targetId).subscribe(
+      result => {
+        this.reset();
+      },
+      error => {
+        alert(<any>error);
+      }
+    );
+  }
+
+  validate() : boolean {
+    return (this._stockMovement.sourceId > 0 &&
+            this._stockMovement.targetId > 0 &&
+            this._stockMovement.productId > 0 &&
+            this._stockMovement.sourceId != this._stockMovement.targetId);
   }
 
 }

@@ -8,14 +8,31 @@ import { CONFIG } from './config';
 @Injectable()
 export class StockMovementService {
 
+  private _serviceName = 'stock_movement';
+
   constructor(
     private _http : Http
   ){}
 
   getAll() {
 
-    return this._http.get(CONFIG.url + 'stock_movement').map(res => res.json());
+    return this._http.get(CONFIG.url + this._serviceName).map(res => res.json());
 
+  }
+
+  create(stockMovement : StockMovement) {
+
+    let request = JSON.stringify(stockMovement);
+    let headers = new Headers({
+      'Content-Type' : 'application/json'
+    });
+    return this._http.post(CONFIG.url + this._serviceName, request, { headers : headers}).map( res => res.json());
+
+  }
+
+  move(productId : number, sourceWarehouseId : number, targetWarehouseId : number ) {
+
+    return this._http.post(CONFIG.url + this._serviceName + '/product/' + productId + '/from/' + sourceWarehouseId + '/to/' + targetWarehouseId, {}).map(res => res.json());
   }
 
 }
