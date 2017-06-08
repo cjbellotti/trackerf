@@ -7,6 +7,7 @@ import { WarehousesComponent } from './components/warehouses.component';
 import { EntryComponent } from './components/entry.component';
 import { CreateMovementComponent } from './components/create-movement.component';
 import { MovementListComponent } from './components/movement-list.component';
+import { StockSummaryComponent } from './components/stock-summary.component';
 import { ErrorComponent } from './components/error.component';
 
 export const appRoutes : Routes = [
@@ -17,6 +18,7 @@ export const appRoutes : Routes = [
   { path: 'entry', component: EntryComponent },
   { path: 'create-movement', component: CreateMovementComponent },
   { path: 'movement-list', component: MovementListComponent },
+  { path : 'stock-summary', component: StockSummaryComponent },
   { path: '**', component: ErrorComponent }
 ];
 

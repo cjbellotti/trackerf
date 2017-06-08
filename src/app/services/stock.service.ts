@@ -8,6 +8,7 @@ import { CONFIG } from './config';
 @Injectable()
 export class StockService {
 
+  private _baseUrl = CONFIG.url + 'stock'
   constructor(
     private _http : Http
   ){}
@@ -16,6 +17,12 @@ export class StockService {
 
     return this._http.get(CONFIG.url + 'stock').map(res => res.json());
 
+  }
+
+  getStockByWarehouse(warehouseId : number ) {
+
+    return this._http.get(this._baseUrl + '/warehouse/' + warehouseId).map(res => res.json());
+    
   }
 
 }

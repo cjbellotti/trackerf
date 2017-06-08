@@ -12,6 +12,7 @@ import { WarehousesComponent } from './components/warehouses.component';
 import { EntryComponent } from './components/entry.component';
 import { CreateMovementComponent } from './components/create-movement.component';
 import { MovementListComponent } from './components/movement-list.component';
+import { StockSummaryComponent } from './components/stock-summary.component';
 import { ErrorComponent } from './components/error.component';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ErrorComponent } from './components/error.component';
     EntryComponent,
     CreateMovementComponent,
     MovementListComponent,
+    StockSummaryComponent,
     ErrorComponent
   ],
   imports: [
