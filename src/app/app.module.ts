@@ -9,7 +9,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home.component';
 import { ProductsComponent } from './components/products.component';
 import { WarehousesComponent } from './components/warehouses.component';
+import { EntryComponent } from './components/entry.component';
 import { CreateMovementComponent } from './components/create-movement.component';
+import { MovementListComponent } from './components/movement-list.component';
 import { ErrorComponent } from './components/error.component';
 
 @NgModule({
@@ -18,7 +20,9 @@ import { ErrorComponent } from './components/error.component';
     HomeComponent,
     ProductsComponent,
     WarehousesComponent,
+    EntryComponent,
     CreateMovementComponent,
+    MovementListComponent,
     ErrorComponent
   ],
   imports: [
