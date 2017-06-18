@@ -9,14 +9,14 @@ import { WarehouseService } from '../services/warehouse.service';
 
 export class WarehousesComponent {
   public title : string;
-  private _lista : Array<Warehouse>;
-  private _form : boolean = false;
-  private _new : boolean = false;
-  private _update : boolean = false;
-  private _warehouse : Warehouse;
+  public _lista : Array<Warehouse>;
+  public _form : boolean = false;
+  public _new : boolean = false;
+  public _update : boolean = false;
+  public _warehouse : Warehouse;
 
   constructor(
-    private _warehouseService : WarehouseService
+    public _warehouseService : WarehouseService
   ){
     this.title = 'Ubicaciones'
     this._warehouse = new Warehouse(0,'');

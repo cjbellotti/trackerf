@@ -14,17 +14,17 @@ import { StockMovementService } from '../services/stock-movement.service';
 export class EntryComponent {
   public title : string;
 
-  private _productInfoId : number;
-  private _targetWarehouseId : number;
-  private _serial : string;
+  public _productInfoId : number;
+  public _targetWarehouseId : number;
+  public _serial : string;
 
-  private _productInfoList : Array<ProductInfoService>;
-  private _warehouseList : Array<Warehouse>;
+  public _productInfoList : Array<ProductInfoService>;
+  public _warehouseList : Array<Warehouse>;
 
   constructor(
-    private _productInfoService : ProductInfoService,
-    private _warehouseService : WarehouseService,
-    private _stockMovementService : StockMovementService
+    public _productInfoService : ProductInfoService,
+    public _warehouseService : WarehouseService,
+    public _stockMovementService : StockMovementService
   ){
     this.title = 'Ingresar un Producto'
     this.reset();

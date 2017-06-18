@@ -16,19 +16,19 @@ import { StockMovementService } from '../services/stock-movement.service';
 
 export class CreateMovementComponent {
   public title : string;
-  private _stockMovement : StockMovement;
+  public _stockMovement : StockMovement;
 
-  private _productInfoList : Array<ProductInfoService>;
-  private _warehouseList : Array<Warehouse>;
-  private _productList : Array<Product>;
+  public _productInfoList : Array<ProductInfoService>;
+  public _warehouseList : Array<Warehouse>;
+  public _productList : Array<Product>;
 
-  private _productInfoId : number = 0;
+  public _productInfoId : number = 0;
 
   constructor(
-    private _productInfoService : ProductInfoService,
-    private _warehouseService : WarehouseService,
-    private _productService : ProductService,
-    private _stockMovementService : StockMovementService
+    public _productInfoService : ProductInfoService,
+    public _warehouseService : WarehouseService,
+    public _productService : ProductService,
+    public _stockMovementService : StockMovementService
   ){
     this.title = 'Productos'
     this._stockMovement = new StockMovement(0,0,0,0,new Date(),null,null,null);

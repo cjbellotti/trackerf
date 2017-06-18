@@ -11,13 +11,13 @@ import { StockService } from '../services/stock.service';
 
 export class StockSummaryComponent {
 
-  private _warehouseId : number;
-  private _warehouseList : Array<Warehouse>;
-  private _stockList : Array<Stock>;
+  public _warehouseId : number;
+  public _warehouseList : Array<Warehouse>;
+  public _stockList : Array<Stock>;
 
   constructor(
-    private _warehouseService : WarehouseService,
-    private _stockService : StockService
+    public _warehouseService : WarehouseService,
+    public _stockService : StockService
   ){
     this.reset();
   }

@@ -9,14 +9,14 @@ import { ProductInfoService } from '../services/product-info.service';
 
 export class ProductsComponent {
   public title : string;
-  private _lista : Array<ProductInfo>;
-  private _form : boolean = false;
-  private _new : boolean = false;
-  private _update : boolean = false;
-  private _productInfo : ProductInfo;
+  public _lista : Array<ProductInfo>;
+  public _form : boolean = false;
+  public _new : boolean = false;
+  public _update : boolean = false;
+  public _productInfo : ProductInfo;
 
   constructor(
-    private _productInfoService : ProductInfoService
+    public _productInfoService : ProductInfoService
   ){
     this.title = 'Productos'
     this._productInfo = new ProductInfo(0,'');

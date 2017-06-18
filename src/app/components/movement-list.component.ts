@@ -19,23 +19,23 @@ export class MovementListComponent {
 
   public title : string = 'Consultar Movimientos';
 
-  private _fromDate : string;
-  private _toDate : string;
-  private _warehouseId : number;
-  private _productInfoId : number;
-  private _serial : string;
+  public _fromDate : string;
+  public _toDate : string;
+  public _warehouseId : number;
+  public _productInfoId : number;
+  public _serial : string;
 
-  private _warehouseList : Array<Warehouse>;
-  private _productInfoList : Array<ProductInfo>;
-  private _productList : Array<Product>;
+  public _warehouseList : Array<Warehouse>;
+  public _productInfoList : Array<ProductInfo>;
+  public _productList : Array<Product>;
 
-  private _movementList = [];
+  public _movementList = [];
 
   constructor(
-    private _warehouseService : WarehouseService,
-    private _productInfoService : ProductInfoService,
-    private _productService : ProductService,
-    private _stockMovementService : StockMovementService
+    public _warehouseService : WarehouseService,
+    public _productInfoService : ProductInfoService,
+    public _productService : ProductService,
+    public _stockMovementService : StockMovementService
   ){
     this.reset();
   }
