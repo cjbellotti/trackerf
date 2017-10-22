@@ -15,6 +15,8 @@ export class WarehousesComponent {
   public _update : boolean = false;
   public _warehouse : Warehouse;
 
+  public loading : boolean = false;
+
   constructor(
     public _warehouseService : WarehouseService
   ){
@@ -54,6 +56,7 @@ export class WarehousesComponent {
   }
 
   onSubmit() {
+    this.loading = true;
     console.log(this._new);
     if (this._new) {
       this._warehouseService.create(this._warehouse).subscribe(
@@ -61,9 +64,11 @@ export class WarehousesComponent {
           this.load();
           this._form = false;
           this._new = false;
+          this.loading = false;
         },
         error => {
           alert(<any>error);
+          this.loading = false;
         }
       );
     } else if (this._update) {
@@ -72,24 +77,29 @@ export class WarehousesComponent {
           this.load();
           this._form = false;
           this._update = false;
+          this.loading = false;
         },
         error => {
           alert(<any>error);
+          this.loading = false;
         }
       );
     }
   }
 
   update(id : number ) {
+    this.loading = true;
     console.log('Update: ' + id);
     this._warehouseService.get(id).subscribe(
       response => {
         this._warehouse = response;
         this._form = true;
         this._update = true;
+        this.loading = false;
       },
       error => {
         alert(<any>error);
+        this.loading = false;
       }
     );
   }

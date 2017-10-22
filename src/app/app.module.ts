@@ -14,6 +14,7 @@ import { CreateMovementComponent } from './components/create-movement.component'
 import { MovementListComponent } from './components/movement-list.component';
 import { StockSummaryComponent } from './components/stock-summary.component';
 import { ErrorComponent } from './components/error.component';
+import { LoadingComponent } from './components/loading.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ErrorComponent } from './components/error.component';
     CreateMovementComponent,
     MovementListComponent,
     StockSummaryComponent,
-    ErrorComponent
+    ErrorComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,8 @@ export class ProductsComponent {
   public _update : boolean = false;
   public _productInfo : ProductInfo;
 
+  public loading : boolean = false;
+
   constructor(
     public _productInfoService : ProductInfoService
   ){
@@ -54,6 +56,7 @@ export class ProductsComponent {
   }
 
   onSubmit() {
+    this.loading = true;
 
     if (this._new) {
       this._productInfoService.create(this._productInfo).subscribe(
@@ -61,9 +64,11 @@ export class ProductsComponent {
           this.load();
           this._form = false;
           this._new = false;
+          this.loading = false;
         },
         error => {
           alert(<any>error);
+          this.loading = false;
         }
       );
     } else if (this._update) {
@@ -72,9 +77,11 @@ export class ProductsComponent {
           this.load();
           this._form = false;
           this._update = false;
+          this.loading = false;
         },
         error => {
           alert(<any>error);
+          this.loading = false;
         }
       );
     }

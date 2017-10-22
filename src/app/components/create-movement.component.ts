@@ -24,6 +24,8 @@ export class CreateMovementComponent {
 
   public _productInfoId : number = 0;
 
+  public loading : boolean = false;
+
   constructor(
     public _productInfoService : ProductInfoService,
     public _warehouseService : WarehouseService,
@@ -86,14 +88,17 @@ export class CreateMovementComponent {
   }
 
   onSubmit() {
+    this.loading = true;
     this._stockMovementService.move(this._stockMovement.productId,
                                     this._stockMovement.sourceId,
                                     this._stockMovement.targetId).subscribe(
       result => {
         this.reset();
+        this.loading = false;
       },
       error => {
         alert(<any>error);
+        this.loading = false;
       }
     );
   }

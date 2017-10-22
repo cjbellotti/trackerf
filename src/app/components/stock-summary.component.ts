@@ -15,6 +15,8 @@ export class StockSummaryComponent {
   public _warehouseList : Array<Warehouse>;
   public _stockList : Array<Stock>;
 
+  public loading : boolean = false;
+
   constructor(
     public _warehouseService : WarehouseService,
     public _stockService : StockService
@@ -35,13 +37,15 @@ export class StockSummaryComponent {
   }
 
   list() {
-
+    this.loading = true;
     this._stockService.getStockByWarehouse(this._warehouseId).subscribe(
       response => {
         this._stockList = response;
+        this.loading = false;
       },
       error => {
         alert(<any>error);
+        this.loading = false;
       }
     );
   }

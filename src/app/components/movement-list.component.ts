@@ -31,6 +31,8 @@ export class MovementListComponent {
 
   public _movementList = [];
 
+  public loading : boolean = false;
+
   constructor(
     public _warehouseService : WarehouseService,
     public _productInfoService : ProductInfoService,
@@ -77,6 +79,7 @@ export class MovementListComponent {
   }
 
   list() {
+      this.loading = true;
 
       var criteria = {
         fromDate : this._fromDate,
@@ -89,9 +92,11 @@ export class MovementListComponent {
       this._stockMovementService.getByCriteria(criteria).subscribe(
         response => {
           this._movementList = response;
+          this.loading = false;
         },
         error => {
           alert(<any>error);
+          this.loading = false;
         }
       )
 

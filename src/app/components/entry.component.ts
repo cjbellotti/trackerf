@@ -21,6 +21,7 @@ export class EntryComponent {
   public _productInfoList : Array<ProductInfoService>;
   public _warehouseList : Array<Warehouse>;
 
+  public loading : boolean = false;
   constructor(
     public _productInfoService : ProductInfoService,
     public _warehouseService : WarehouseService,
@@ -62,14 +63,17 @@ export class EntryComponent {
   }
 
   onSubmit() {
+    this.loading = true;
     this._stockMovementService.entry(this._productInfoId,
                                     this._targetWarehouseId,
                                     this._serial).subscribe(
       result => {
         this.reset();
+        this.loading = false;
       },
       error => {
         alert(<any>error);
+        this.loading = false;
       }
     );
   }
